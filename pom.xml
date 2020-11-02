@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>
+        <relativePath/>
+    </parent>
+    <groupId>com.card</groupId>
+    <artifactId>system</artifactId>
+    <version>0.0.1</version>
+    <packaging>war</packaging>
+    <name>CardSystem</name>
+    <description>Code Challenge Card System</description>
+
+    <properties>
+        <java.version>13</java.version>
+        <narayana.version>5.10.5.Final</narayana.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+
+        <!-- SPRING BOOT  -->
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-server-spring-boot-starter</artifactId>
+            <version>7.6.0.Final</version>
+        </dependency>
+        <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-web</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot</artifactId>
+          </dependency>
+          <!-- SPRING SECURITY -->
+          <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-security</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework.security</groupId>
+              <artifactId>spring-security-test</artifactId>
+              <scope>test</scope>
+          </dependency>
+
+        <!-- SPRING  JPA -->
+          <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-data-jpa</artifactId>
+          </dependency>
+
+
+          <!-- H2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+
+        <!-- CORE LIBRARIES -->
+        <dependency>
+            <groupId>javax.jdo</groupId>
+            <artifactId>jdo2-api</artifactId>
+            <version>2.3-eb</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+        </dependency>
+
+        <!-- DROOLS LIBRARIES -->
+         <dependency>
+              <groupId>org.drools</groupId>
+              <artifactId>drools-decisiontables</artifactId>
+              <version>7.6.0.Final</version>
+          </dependency>
+          <dependency>
+              <groupId>org.drools</groupId>
+              <artifactId>drools-core</artifactId>
+              <version>7.6.0.Final</version>
+          </dependency>
+          <dependency>
+              <groupId>org.drools</groupId>
+              <artifactId>drools-compiler</artifactId>
+              <version>7.6.0.Final</version>
+          </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+
+        <!-- LOGGING LOG4J2 -->
+        <!--  <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency> -->
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+</project>

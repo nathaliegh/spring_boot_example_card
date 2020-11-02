@@ -1,0 +1,29 @@
+rule "If it's a prepaid or credit Card validate all limit values"
+when
+    $card : Card( (cardStatus == CardStatus.PREPAID.getValue || cardStatus == CardStatus.CREDIT.getValue)
+    && (card.getTopUpLimit == null || card.getWeeklyLimit == null || card.getMonthlyLimit == null || card.getYearlyLimit == null))
+then
+    throw exception
+end
+
+rule "If it's a credit card "
+when
+ $card : Card(cardStatus == CardStatus.CREDIT.getValue)
+ switch(cardUsage) {
+        case CardUsage.ONE_TIME_BONUS.getValue ,CardUsage.GRACE_PERIOD.getValue ,CardUsage.REWARDS_POINT.getValue : {
+            do[fees15]
+        }
+        case CardUsage.CASH_BACK.getValue  , CardUsage.FREQUENT_FLYER_MILES.getValue , CardUsage.SAFETY.getValue : {
+            do[fees25]
+        }
+        case CardUsage.KEEPING_VENDORS_HONEST.getValue , CardUsage.INSURANCE.getValue ,CardUsage.UNIVERSAL_ACCEPTANCE.getValue, CardUsage.BUILDING_CREDIT.getValue   : {
+             do[fees35]
+        }
+    }
+then[fees15]
+    modify( $card ){ setFees(1.5) };
+then[fees25]
+    modify( $card ){ setFees(2.5) };
+then[fees35]
+    modify( $card ) { setFees(3.5) };
+end
